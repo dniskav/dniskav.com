@@ -1,0 +1,18 @@
+doctype !html
+html(data-ng-app="App")
+  head
+    title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="/styles/libraries.min.css")
+    link(rel="stylesheet", href="/styles/main.css")
+  body(data-ng-controller='mainCtrl')
+    section.container
+      include ../partials/header
+
+      section.container.top-page
+      block content
+      
+      include ../partials/footer
+  script(src='/js/vendors/libraries.js')
+  script(src='/js/ag/main.min.js')

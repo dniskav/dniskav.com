@@ -1,4 +1,4 @@
-import type { TerminalConfig } from '@dniskav/hero-terminal'
+import type { TerminalConfig } from '@dniskav/hero-terminal/dist/types'
 
 export const terminalConfig: TerminalConfig = {
   typingSpeed: 36,

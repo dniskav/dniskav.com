@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "about": "About",
+    "experience": "Experience",
+    "blog": "Blog",
+    "playground": "Playground",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Daniel Silva",
+    "title": "Senior Fullstack Engineer",
+    "subtitle": "Building performant interfaces since 2011",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in touch"
+  },
+  "about": {
+    "heading": "About me",
+    "bio": "Senior Fullstack Engineer with 14+ years of experience across Colombia and Spain. I've built enterprise systems at Daimler, Lululemon, and Elavon — and now I build AI-powered tools and custom frameworks from scratch.",
+    "location": "Tarragona, Spain",
+    "available": "Open to opportunities",
+    "download_cv": "Download CV",
+    "era1_label": "Era I — The Craftsman",
+    "era1_years": "2011 – 2024",
+    "era1_desc": "14 years. Colombia → Spain. From junior to Senior Lead. Enterprise scale at Daimler, Lululemon, Elavon, Globant. Led teams, defined architecture, trained developers.",
+    "era2_label": "Era II — AI-Augmented Engineer",
+    "era2_years": "2025 →",
+    "era2_desc": "Adopted agentic AI as a force multiplier. Built fTree, a custom JSX framework from scratch. Trading bots with Python, FastAPI and multi-exchange support."
+  },
+  "projects": {
+    "heading": "Projects",
+    "subheading": "Selected work across 14 years — from browser games to AI-powered bots",
+    "filter_all": "All",
+    "filter_era1": "Era I",
+    "filter_era2": "Era II",
+    "filter_games": "Games Lab",
+    "github": "GitHub",
+    "demo": "Live demo",
+    "view_all_github": "View all on GitHub",
+    "items": {
+      "scalper-bot":            { "name": "Scalper Bot", "desc": "Advanced 5m scalper (RSI3 + ADX5 + EMA50) with Hexagonal Architecture, multi-exchange support and Telegram notifications" },
+      "trad-bot":               { "name": "Trad Bot", "desc": "Automated trading bot with plug-and-play strategy system, real-time charts and Binance API integration" },
+      "docs-list-challenge":    { "name": "Docs List Challenge", "desc": "Real-time document management app built with a custom JSX framework (fTree), WebSockets and Hexagonal Architecture — no React" },
+      "fTree":                  { "name": "fTree", "desc": "Proof of concept for a custom JSX-based UI framework with hooks, built from scratch" },
+      "dragon-ball-react":      { "name": "Dragon Ball React", "desc": "Code challenge using the Dragon Ball API, Hexagonal Architecture, monorepo and custom CSS package" },
+      "microfrontend-webpack":  { "name": "Microfrontend Webpack", "desc": "Example of a Micro Frontend setup using Webpack Module Federation" },
+      "prueba-tecnica-mobiles": { "name": "Mobile Store", "desc": "Phone store app — technical challenge for Zara with cart, localStorage and full test coverage" },
+      "wordle-react":           { "name": "Wordle React", "desc": "Wordle clone built in React + TypeScript with Vite" },
+      "weatherApp":             { "name": "Weather App", "desc": "Weather application built with Angular 19" },
+      "tetris":                 { "name": "Tetris", "desc": "Classic Tetris built in Vanilla JS and HTML5 Canvas" },
+      "Game-of-Life":           { "name": "Game of Life", "desc": "Conway's Game of Life implemented in pure JavaScript" },
+      "jsChromakit":            { "name": "JS Chromakit", "desc": "Chroma key (green screen) effect implemented in JavaScript with Canvas" },
+      "flappybird":             { "name": "Flappy Bird", "desc": "Flappy Bird clone in JavaScript" },
+      "elevator-simulator":     { "name": "Elevator Simulator", "desc": "Elevator logic simulator — configurable floors (4–80) and elevators (2–10)" },
+      "texas-hold-em":          { "name": "Texas Hold'em", "desc": "Texas Hold'em poker game" },
+      "snakehtml5":             { "name": "Snake HTML5", "desc": "Classic Snake game built with HTML5 Canvas" },
+      "naveshtml5":             { "name": "Space Invaders", "desc": "Space Invaders / Galaga-inspired HTML5 game" },
+      "worldle-rxjs":           { "name": "Worldle RxJS", "desc": "Worldle-inspired geography game built with RxJS and Bun" },
+      "rick-and-morty-app":     { "name": "Rick & Morty App", "desc": "Rick & Morty API explorer — technical test for Crossvale in Angular 18" },
+      "tradeling":              { "name": "Tradeling", "desc": "GitHub search app with i18n (en/es) and unit tests — technical test" },
+      "cryptocurrency":         { "name": "Crypto Tracker", "desc": "Cryptocurrency tracker using CoinMarketCap API, built from scratch without CRA" },
+      "chat-reactjs":           { "name": "Chat App", "desc": "Full-stack real-time chat using React, Node.js, Socket.io and MongoDB" },
+      "chrome-extension":       { "name": "Chrome Extension", "desc": "Chrome extension that auto-fills a form based on Spain public holidays" },
+      "simetrik-test-1":        { "name": "Simetrik Test", "desc": "Technical test using React Hooks, Ant Design and Styled-components" },
+      "ML":                     { "name": "MercadoLibre Test", "desc": "Front-end technical test for MercadoLibre" },
+      "chat-node-io-express":   { "name": "Node Chat", "desc": "Real-time chat with Node.js, Express and Socket.io" }
+    }
+  },
+  "skills": {
+    "heading": "Tech evolution",
+    "subheading": "From Backbone.js to AI agents — 14 years of continuous growth",
+    "era1_divider": "Era I — The Craftsman",
+    "era2_divider": "Era II — AI-Augmented"
+  },
+  "experience": {
+    "heading": "Experience",
+    "subheading": "12 companies across Colombia and Spain — from startup to enterprise",
+    "present": "Present",
+    "roles": {
+      "senior_frontend":      "Senior Frontend Engineer",
+      "senior_fullstack":     "Senior Fullstack Engineer",
+      "fullstack":            "Fullstack Developer",
+      "senior_fullstack_lead":"Senior Fullstack Lead",
+      "senior_engineer":      "Senior Software Engineer",
+      "dev_lead":             "Development Lead"
+    }
+  },
+  "contact": {
+    "heading": "Let's build something together",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "playground": {
+    "heading": "Playground",
+    "subheading": "Interactive WebGL experiments and generative art."
+  },
+  "blog": {
+    "heading": "Blog",
+    "subheading": "Technical articles on frontend architecture, AI tools, and open source.",
+    "read_more": "Read more"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}

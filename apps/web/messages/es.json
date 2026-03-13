@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "projects": "Proyectos",
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "blog": "Blog",
+    "playground": "Playground",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "name": "Daniel Silva",
+    "title": "Senior Fullstack Engineer",
+    "subtitle": "Construyendo interfaces de alto rendimiento desde 2011",
+    "cta_projects": "Ver proyectos",
+    "cta_contact": "Contactar"
+  },
+  "about": {
+    "heading": "Sobre mí",
+    "bio": "Senior Fullstack Engineer con más de 14 años de experiencia entre Colombia y España. He construido sistemas empresariales en Daimler, Lululemon y Elavon — y ahora construyo herramientas potenciadas por IA y frameworks propios desde cero.",
+    "location": "Tarragona, España",
+    "available": "Disponible para nuevos retos",
+    "download_cv": "Descargar CV",
+    "era1_label": "Era I — El Artesano",
+    "era1_years": "2011 – 2024",
+    "era1_desc": "14 años. Colombia → España. De junior a Senior Lead. Escala empresarial en Daimler, Lululemon, Elavon, Globant. Lideré equipos, definí arquitectura, formé desarrolladores.",
+    "era2_label": "Era II — Ingeniero Aumentado por IA",
+    "era2_years": "2025 →",
+    "era2_desc": "Adopté IA agéntica como multiplicador de fuerza. Construí fTree, un framework JSX propio desde cero. Trading bots con Python, FastAPI y soporte multi-exchange."
+  },
+  "projects": {
+    "heading": "Proyectos",
+    "subheading": "Trabajo seleccionado a lo largo de 14 años — de juegos de navegador a bots con IA",
+    "filter_all": "Todos",
+    "filter_era1": "Era I",
+    "filter_era2": "Era II",
+    "filter_games": "Games Lab",
+    "github": "GitHub",
+    "demo": "Ver demo",
+    "view_all_github": "Ver todo en GitHub",
+    "items": {
+      "scalper-bot":            { "name": "Scalper Bot", "desc": "Bot scalper avanzado de 5m (RSI3 + ADX5 + EMA50) con Arquitectura Hexagonal, soporte multi-exchange y notificaciones Telegram" },
+      "trad-bot":               { "name": "Trad Bot", "desc": "Bot de trading automatizado con sistema de estrategias plug-and-play, gráficos en tiempo real e integración con la API de Binance" },
+      "docs-list-challenge":    { "name": "Docs List Challenge", "desc": "App de gestión de documentos en tiempo real con un framework JSX propio (fTree), WebSockets y Arquitectura Hexagonal — sin React" },
+      "fTree":                  { "name": "fTree", "desc": "Prueba de concepto de un framework UI basado en JSX con hooks, construido desde cero" },
+      "dragon-ball-react":      { "name": "Dragon Ball React", "desc": "Reto de código usando la API de Dragon Ball, Arquitectura Hexagonal, monorepo y paquete CSS personalizado" },
+      "microfrontend-webpack":  { "name": "Microfrontend Webpack", "desc": "Ejemplo de Micro Frontend con Webpack Module Federation" },
+      "prueba-tecnica-mobiles": { "name": "Tienda de móviles", "desc": "App de tienda de teléfonos — reto técnico para Zara con carrito, localStorage y cobertura de tests completa" },
+      "wordle-react":           { "name": "Wordle React", "desc": "Clon de Wordle en React + TypeScript con Vite" },
+      "weatherApp":             { "name": "Weather App", "desc": "Aplicación del tiempo con Angular 19" },
+      "tetris":                 { "name": "Tetris", "desc": "Tetris clásico en Vanilla JS y HTML5 Canvas" },
+      "Game-of-Life":           { "name": "Juego de la Vida", "desc": "El Juego de la Vida de Conway en JavaScript puro" },
+      "jsChromakit":            { "name": "JS Chromakit", "desc": "Efecto chroma key (pantalla verde) en JavaScript con Canvas" },
+      "flappybird":             { "name": "Flappy Bird", "desc": "Clon de Flappy Bird en JavaScript" },
+      "elevator-simulator":     { "name": "Simulador de ascensores", "desc": "Simulador de lógica de ascensores — plantas (4–80) y ascensores (2–10) configurables" },
+      "texas-hold-em":          { "name": "Texas Hold'em", "desc": "Juego de póker Texas Hold'em" },
+      "snakehtml5":             { "name": "Snake HTML5", "desc": "Clásico Snake con HTML5 Canvas" },
+      "naveshtml5":             { "name": "Space Invaders", "desc": "Juego inspirado en Space Invaders / Galaga en HTML5" },
+      "worldle-rxjs":           { "name": "Worldle RxJS", "desc": "Juego de geografía inspirado en Worldle con RxJS y Bun" },
+      "rick-and-morty-app":     { "name": "Rick & Morty App", "desc": "Explorador de la API de Rick & Morty — prueba técnica para Crossvale en Angular 18" },
+      "tradeling":              { "name": "Tradeling", "desc": "App de búsqueda en GitHub con i18n (en/es) y tests unitarios — prueba técnica" },
+      "cryptocurrency":         { "name": "Crypto Tracker", "desc": "Rastreador de criptomonedas con la API de CoinMarketCap, sin CRA" },
+      "chat-reactjs":           { "name": "Chat App", "desc": "Chat en tiempo real full-stack con React, Node.js, Socket.io y MongoDB" },
+      "chrome-extension":       { "name": "Chrome Extension", "desc": "Extensión de Chrome que rellena formularios según los festivos de España" },
+      "simetrik-test-1":        { "name": "Simetrik Test", "desc": "Prueba técnica con React Hooks, Ant Design y Styled-components" },
+      "ML":                     { "name": "MercadoLibre Test", "desc": "Prueba técnica de front-end para MercadoLibre" },
+      "chat-node-io-express":   { "name": "Node Chat", "desc": "Chat en tiempo real con Node.js, Express y Socket.io" }
+    }
+  },
+  "skills": {
+    "heading": "Evolución tecnológica",
+    "subheading": "De Backbone.js a agentes de IA — 14 años de crecimiento continuo",
+    "era1_divider": "Era I — El Artesano",
+    "era2_divider": "Era II — Aumentado por IA"
+  },
+  "experience": {
+    "heading": "Experiencia",
+    "subheading": "12 empresas entre Colombia y España — de startup a gran empresa",
+    "present": "Presente",
+    "roles": {
+      "senior_frontend":      "Senior Frontend Engineer",
+      "senior_fullstack":     "Senior Fullstack Engineer",
+      "fullstack":            "Fullstack Developer",
+      "senior_fullstack_lead":"Senior Fullstack Lead",
+      "senior_engineer":      "Senior Software Engineer",
+      "dev_lead":             "Líder de Desarrollo"
+    }
+  },
+  "contact": {
+    "heading": "Construyamos algo juntos",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub"
+  },
+  "playground": {
+    "heading": "Playground",
+    "subheading": "Experimentos WebGL interactivos y arte generativo."
+  },
+  "blog": {
+    "heading": "Blog",
+    "subheading": "Artículos técnicos sobre arquitectura frontend, herramientas de IA y open source.",
+    "read_more": "Leer más"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados"
+  }
+}

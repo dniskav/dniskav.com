@@ -1,0 +1,114 @@
+---
+title: "Hexagonal Architecture in the frontend"
+titleEs: "Arquitectura Hexagonal en el frontend"
+date: "2025-02-20"
+summary: "Why I apply Hexagonal Architecture to React projects and how it makes codebases genuinely maintainable."
+summaryEs: "Por qué aplico Arquitectura Hexagonal en proyectos React y cómo hace que los proyectos sean realmente mantenibles."
+tags: ["Architecture", "React", "TypeScript", "Clean Code"]
+slug: "hexagonal-architecture-frontend"
+---
+
+Most frontend codebases start clean and become unmaintainable.
+The reason is almost always the same: business logic leaks into components,
+components depend on HTTP clients, and tests become impossible without mocking half the app.
+
+Hexagonal Architecture (also called Ports & Adapters) solves this by enforcing
+a strict boundary between your domain and the outside world.
+
+## The layers
+
+```
+src/
+├── domain/          ← Pure business logic, zero dependencies
+│   ├── models/
+│   └── ports/       ← Interfaces (contracts)
+├── application/     ← Use cases (orchestrate domain + ports)
+├── infrastructure/  ← Adapters (HTTP, localStorage, WebSocket)
+└── ui/              ← React components (thin, dumb, presentation only)
+```
+
+The rule: **dependencies point inward only**. Domain knows nothing about React or HTTP.
+
+## A concrete example
+
+Say you're building a document list feature. The domain model is simple:
+
+```ts
+// domain/models/Document.ts
+export interface Document {
+  id: string
+  title: string
+  updatedAt: Date
+  ownerId: string
+}
+```
+
+The port (interface) defines what operations are needed — without caring about implementation:
+
+```ts
+// domain/ports/DocumentRepository.ts
+export interface DocumentRepository {
+  findAll(): Promise<Document[]>
+  save(doc: Document): Promise<void>
+  delete(id: string): Promise<void>
+}
+```
+
+The use case orchestrates the flow:
+
+```ts
+// application/GetDocumentsUseCase.ts
+export class GetDocumentsUseCase {
+  constructor(private readonly repo: DocumentRepository) {}
+
+  async execute(): Promise<Document[]> {
+    return this.repo.findAll()
+  }
+}
+```
+
+The React component just calls the use case — it doesn't know if data comes from an API,
+localStorage, or a WebSocket:
+
+```tsx
+// ui/DocumentList.tsx
+function DocumentList({ useCase }: { useCase: GetDocumentsUseCase }) {
+  const [docs, setDocs] = useState<Document[]>([])
+
+  useEffect(() => {
+    useCase.execute().then(setDocs)
+  }, [useCase])
+
+  return <ul>{docs.map(d => <li key={d.id}>{d.title}</li>)}</ul>
+}
+```
+
+## Why this matters for testing
+
+Unit testing the use case doesn't require a browser or a running API:
+
+```ts
+it('returns all documents', async () => {
+  const fakeRepo: DocumentRepository = {
+    findAll: async () => [{ id: '1', title: 'Test', updatedAt: new Date(), ownerId: 'u1' }],
+    save: async () => {},
+    delete: async () => {},
+  }
+  const useCase = new GetDocumentsUseCase(fakeRepo)
+  const result = await useCase.execute()
+  expect(result).toHaveLength(1)
+})
+```
+
+## When to use it
+
+Hexagonal Architecture adds boilerplate. It's overkill for a weekend project.
+It shines when:
+
+- The codebase will be maintained by multiple developers
+- The data source might change (REST → GraphQL, REST → WebSocket)
+- You need high test coverage without complex mocking setups
+- The business logic is non-trivial
+
+I've applied this pattern in my `docs-list-challenge` project (built with fTree, not React)
+and at enterprise scale at Daimler and Elavon. The pattern scales.

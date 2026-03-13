@@ -1,0 +1,285 @@
+export type ProjectEra = 1 | 2
+export type ProjectCategory = 'game' | 'app' | 'experiment' | 'challenge' | 'tool' | 'bot'
+
+export interface Project {
+  id: string
+  repo: string
+  era: ProjectEra
+  category: ProjectCategory
+  featured?: boolean
+  year: number
+  tags: string[]
+  github: string
+  demo?: string
+  /** Translations loaded separately via en.json / es.json */
+}
+
+// ─── ERA II — AI Agent Era (2025 →) ────────────────────────────────────────
+export const era2Projects: Project[] = [
+  {
+    id: 'scalper-bot',
+    repo: 'scalper-bot',
+    era: 2,
+    category: 'bot',
+    featured: true,
+    year: 2025,
+    tags: ['Python', 'HEX Architecture', 'ccxt', 'WebSocket', 'Binance', 'Bybit', 'Telegram'],
+    github: 'https://github.com/dniskav/scalper-bot',
+  },
+  {
+    id: 'trad-bot',
+    repo: 'trad-bot',
+    era: 2,
+    category: 'bot',
+    featured: true,
+    year: 2025,
+    tags: ['Python', 'FastAPI', 'React', 'WebSocket', 'Binance API'],
+    github: 'https://github.com/dniskav/trad-bot',
+  },
+  {
+    id: 'docs-list-challenge',
+    repo: 'docs-list-challenge',
+    era: 2,
+    category: 'app',
+    featured: true,
+    year: 2025,
+    tags: ['TypeScript', 'custom JSX (fTree)', 'WebSockets', 'HEX Architecture'],
+    github: 'https://github.com/dniskav/docs-list-challenge',
+  },
+  {
+    id: 'fTree',
+    repo: 'fTree',
+    era: 2,
+    category: 'experiment',
+    featured: true,
+    year: 2025,
+    tags: ['JavaScript', 'JSX', 'custom framework'],
+    github: 'https://github.com/dniskav/fTree',
+    demo: 'https://dniskav.github.io/fTree/',
+  },
+  {
+    id: 'dragon-ball-react',
+    repo: 'dragon-ball-react',
+    era: 2,
+    category: 'challenge',
+    featured: true,
+    year: 2025,
+    tags: ['React', 'TypeScript', 'Vite', 'HEX Architecture', 'pnpm monorepo'],
+    github: 'https://github.com/dniskav/dragon-ball-react',
+    demo: 'https://dniskav.github.io/dragon-ball-react/',
+  },
+  {
+    id: 'microfrontend-webpack',
+    repo: 'microfrontend-webpack',
+    era: 2,
+    category: 'experiment',
+    featured: true,
+    year: 2025,
+    tags: ['Webpack', 'Module Federation', 'JavaScript'],
+    github: 'https://github.com/dniskav/microfrontend-webpack',
+  },
+  {
+    id: 'prueba-tecnica-mobiles',
+    repo: 'prueba-tecnica-mobiles',
+    era: 2,
+    category: 'challenge',
+    year: 2025,
+    tags: ['React', 'TypeScript', 'Vite', 'Vitest', 'React Testing Library'],
+    github: 'https://github.com/dniskav/prueba-tecnica-mobiles',
+  },
+  {
+    id: 'wordle-react',
+    repo: 'wordle-react',
+    era: 2,
+    category: 'game',
+    year: 2025,
+    tags: ['React', 'TypeScript', 'Vite'],
+    github: 'https://github.com/dniskav/wordle-react',
+    demo: 'https://dniskav.github.io/wordle-react/',
+  },
+  {
+    id: 'weatherApp',
+    repo: 'weatherApp',
+    era: 2,
+    category: 'app',
+    year: 2025,
+    tags: ['Angular 19'],
+    github: 'https://github.com/dniskav/weatherApp',
+  },
+]
+
+// ─── ERA I — Games ──────────────────────────────────────────────────────────
+export const gamesProjects: Project[] = [
+  {
+    id: 'tetris',
+    repo: 'tetris',
+    era: 1,
+    category: 'game',
+    featured: true,
+    year: 2023,
+    tags: ['Vanilla JS', 'HTML5 Canvas'],
+    github: 'https://github.com/dniskav/tetris',
+    demo: 'https://dniskav.github.io/tetris/',
+  },
+  {
+    id: 'Game-of-Life',
+    repo: 'Game-of-Life',
+    era: 1,
+    category: 'game',
+    featured: true,
+    year: 2020,
+    tags: ['Vanilla JS'],
+    github: 'https://github.com/dniskav/Game-of-Life',
+    demo: 'https://dniskav.github.io/Game-of-Life/',
+  },
+  {
+    id: 'jsChromakit',
+    repo: 'jsChromakit',
+    era: 1,
+    category: 'experiment',
+    featured: true,
+    year: 2020,
+    tags: ['Vanilla JS', 'Canvas'],
+    github: 'https://github.com/dniskav/jsChromakit',
+    demo: 'https://dniskav.github.io/jsChromakit/',
+  },
+  {
+    id: 'flappybird',
+    repo: 'flappybird',
+    era: 1,
+    category: 'game',
+    year: 2023,
+    tags: ['Vanilla JS', 'HTML5 Canvas'],
+    github: 'https://github.com/dniskav/flappybird',
+  },
+  {
+    id: 'elevator-simulator',
+    repo: 'elevator-simulator',
+    era: 1,
+    category: 'experiment',
+    year: 2019,
+    tags: ['Vanilla JS ES6', 'CSS'],
+    github: 'https://github.com/dniskav/elevator-simulator',
+  },
+  {
+    id: 'texas-hold-em',
+    repo: 'texas-hold-em',
+    era: 1,
+    category: 'game',
+    year: 2016,
+    tags: ['Vanilla JS'],
+    github: 'https://github.com/dniskav/texas-hold-em',
+  },
+  {
+    id: 'snakehtml5',
+    repo: 'snakehtml5',
+    era: 1,
+    category: 'game',
+    year: 2013,
+    tags: ['HTML5 Canvas', 'Vanilla JS'],
+    github: 'https://github.com/dniskav/snakehtml5',
+  },
+  {
+    id: 'naveshtml5',
+    repo: 'naveshtml5',
+    era: 1,
+    category: 'game',
+    year: 2013,
+    tags: ['HTML5 Canvas', 'Vanilla JS'],
+    github: 'https://github.com/dniskav/naveshtml5',
+  },
+]
+
+// ─── ERA I — Featured apps & challenges ─────────────────────────────────────
+export const era1Projects: Project[] = [
+  {
+    id: 'worldle-rxjs',
+    repo: 'worldle-rxjs',
+    era: 1,
+    category: 'app',
+    featured: true,
+    year: 2024,
+    tags: ['RxJS', 'TypeScript', 'Bun'],
+    github: 'https://github.com/dniskav/worldle-rxjs',
+    demo: 'https://dniskav.github.io/worldle-rxjs/',
+  },
+  {
+    id: 'rick-and-morty-app',
+    repo: 'rick-and-morty-app',
+    era: 1,
+    category: 'challenge',
+    featured: true,
+    year: 2024,
+    tags: ['Angular 18'],
+    github: 'https://github.com/dniskav/rick-and-morty-app',
+    demo: 'https://dniskav.github.io/rick-and-morty-app',
+  },
+  {
+    id: 'tradeling',
+    repo: 'tradeling',
+    era: 1,
+    category: 'challenge',
+    featured: true,
+    year: 2021,
+    tags: ['React', 'TypeScript', 'Redux', 'i18n'],
+    github: 'https://github.com/dniskav/tradeling',
+  },
+  {
+    id: 'cryptocurrency',
+    repo: 'cryptocurrency',
+    era: 1,
+    category: 'app',
+    featured: true,
+    year: 2019,
+    tags: ['React', 'Redux', 'Webpack', 'SASS'],
+    github: 'https://github.com/dniskav/cryptocurrency',
+  },
+  {
+    id: 'chat-reactjs',
+    repo: 'chat-reactjs',
+    era: 1,
+    category: 'app',
+    year: 2019,
+    tags: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
+    github: 'https://github.com/dniskav/chat-reactjs',
+  },
+  {
+    id: 'chrome-extension',
+    repo: 'chrome-extension',
+    era: 1,
+    category: 'tool',
+    year: 2023,
+    tags: ['Chrome Extension API', 'JavaScript'],
+    github: 'https://github.com/dniskav/chrome-extension',
+  },
+  {
+    id: 'simetrik-test-1',
+    repo: 'simetrik-test-1',
+    era: 1,
+    category: 'challenge',
+    year: 2020,
+    tags: ['React', 'Ant Design', 'Styled-components'],
+    github: 'https://github.com/dniskav/simetrik-test-1',
+  },
+  {
+    id: 'ML',
+    repo: 'ML',
+    era: 1,
+    category: 'challenge',
+    year: 2021,
+    tags: ['React'],
+    github: 'https://github.com/dniskav/ML',
+  },
+  {
+    id: 'chat-node-io-express',
+    repo: 'chat-node-io-express',
+    era: 1,
+    category: 'app',
+    year: 2015,
+    tags: ['Node.js', 'Express', 'Socket.io'],
+    github: 'https://github.com/dniskav/chat-node-io-express',
+  },
+]
+
+// ─── All projects combined ───────────────────────────────────────────────────
+export const allProjects: Project[] = [...era2Projects, ...gamesProjects, ...era1Projects]

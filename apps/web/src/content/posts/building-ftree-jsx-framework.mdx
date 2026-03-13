@@ -1,0 +1,87 @@
+---
+title: "Building fTree: a JSX framework from scratch"
+titleEs: "Construyendo fTree: un framework JSX desde cero"
+date: "2025-03-10"
+summary: "How I built a custom JSX-based UI framework with hooks and a virtual DOM — without React."
+summaryEs: "Cómo construí un framework UI basado en JSX con hooks y DOM virtual — sin React."
+tags: ["JavaScript", "JSX", "Framework", "Open Source"]
+slug: "building-ftree-jsx-framework"
+---
+
+After years of using React daily, I wanted to understand what really happens under the hood.
+fTree is my answer: a proof-of-concept JSX framework built from scratch that implements
+the core ideas — virtual DOM diffing, hooks, and component re-renders — in ~600 lines of code.
+
+## Why build your own framework?
+
+The best way to understand a tool is to build it yourself. React abstracts a lot of complexity,
+and that abstraction is valuable — but it can also hide what's actually happening.
+
+```js
+// fTree's createElement — the JSX transform target
+export function h(type, props, ...children) {
+  return { type, props: props ?? {}, children: children.flat() }
+}
+```
+
+## Virtual DOM diffing
+
+The diffing algorithm is the heart of any UI framework. fTree implements a simple but effective
+recursive diff that handles element replacement, attribute patches, and child reconciliation.
+
+```js
+function diff(parent, oldNode, newNode, index = 0) {
+  if (!oldNode) {
+    parent.appendChild(createElement(newNode))
+    return
+  }
+  if (!newNode) {
+    parent.removeChild(parent.childNodes[index])
+    return
+  }
+  if (changed(oldNode, newNode)) {
+    parent.replaceChild(createElement(newNode), parent.childNodes[index])
+    return
+  }
+  if (newNode.type) {
+    patchProps(parent.childNodes[index], oldNode.props, newNode.props)
+    diffChildren(parent.childNodes[index], oldNode.children, newNode.children)
+  }
+}
+```
+
+## Hooks without React
+
+Implementing `useState` without React's internals requires a bit of creativity.
+The key insight: hooks work because components always re-render in the same order,
+so we can use a simple index to track state slots.
+
+```js
+let currentComponent = null
+let hookIndex = 0
+
+export function useState(initial) {
+  const component = currentComponent
+  const index = hookIndex++
+  if (component.hooks[index] === undefined) {
+    component.hooks[index] = initial
+  }
+  const setState = (newValue) => {
+    component.hooks[index] = newValue
+    scheduleRender(component)
+  }
+  return [component.hooks[index], setState]
+}
+```
+
+## What I learned
+
+Building fTree taught me more about React internals in two weeks than years of using it.
+Key takeaways:
+
+- **Reconciliation is expensive** — React's Fiber architecture exists for a reason
+- **The rules of hooks are not arbitrary** — they're enforced by the implementation
+- **JSX is just syntax sugar** — the transform to `h()` calls is trivial
+
+The full source is on [GitHub](https://github.com/dniskav/fTree). It's not production-ready,
+but it's a great learning exercise.

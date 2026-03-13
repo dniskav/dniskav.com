@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#353535" rx="8"/>
+  <text x="6" y="38" font-size="20" font-weight="bold" font-family="monospace" fill="#ccc">expr</text>
+  <text x="6" y="54" font-size="20" font-weight="bold" font-family="monospace" fill="#999">ess</text>
+</svg>

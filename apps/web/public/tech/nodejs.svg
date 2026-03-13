@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#1a1a1a" rx="8"/>
+  <polygon points="32,6 54,18 54,42 32,54 10,42 10,18" fill="none" stroke="#6db33f" stroke-width="2"/>
+  <text x="20" y="42" font-size="24" font-weight="bold" font-family="monospace" fill="#6db33f">N</text>
+  <text x="34" y="38" font-size="13" font-family="monospace" fill="#6db33f">JS</text>
+</svg>

@@ -25,13 +25,13 @@ export const terminalConfig: TerminalConfig = {
   commands: {
     help: {
       description: 'Show available commands',
-      action: ({ allCommands }) => (
+      action: ({ allCommands }: any) => (
         <div className="pl-4">
           <p className="text-accent mb-1">Available commands:</p>
-          {Object.entries(allCommands).map(([cmd, { description }]) => (
+          {Object.entries(allCommands).map(([cmd, info]: any) => (
             <p key={cmd}>
               <span className="text-white">{cmd.padEnd(14)}</span>
-              <span className="text-muted-foreground">{description}</span>
+              <span className="text-muted-foreground">{info.description}</span>
             </p>
           ))}
         </div>
@@ -39,49 +39,49 @@ export const terminalConfig: TerminalConfig = {
     },
     about: {
       description: 'Go to About section',
-      action: ({ scroll }) => {
+      action: ({ scroll }: any) => {
         scroll('about')
         return <p className="text-muted-foreground pl-4">Scrolling to About…</p>
       },
     },
     skills: {
       description: 'Go to Skills section',
-      action: ({ scroll }) => {
+      action: ({ scroll }: any) => {
         scroll('skills')
         return <p className="text-muted-foreground pl-4">Scrolling to Skills…</p>
       },
     },
     projects: {
       description: 'Go to Projects section',
-      action: ({ scroll }) => {
+      action: ({ scroll }: any) => {
         scroll('projects')
         return <p className="text-muted-foreground pl-4">Scrolling to Projects…</p>
       },
     },
     experience: {
       description: 'Go to Experience section',
-      action: ({ scroll }) => {
+      action: ({ scroll }: any) => {
         scroll('experience')
         return <p className="text-muted-foreground pl-4">Scrolling to Experience…</p>
       },
     },
     contact: {
       description: 'Go to Contact section',
-      action: ({ scroll }) => {
+      action: ({ scroll }: any) => {
         scroll('contact')
         return <p className="text-muted-foreground pl-4">Scrolling to Contact…</p>
       },
     },
     blog: {
       description: 'Open Blog page',
-      action: ({ navigate }) => {
+      action: ({ navigate }: any) => {
         navigate('blog')
         return <p className="text-muted-foreground pl-4">Opening Blog…</p>
       },
     },
     playground: {
       description: 'Open Playground page',
-      action: ({ navigate }) => {
+      action: ({ navigate }: any) => {
         navigate('playground')
         return <p className="text-muted-foreground pl-4">Opening Playground…</p>
       },
@@ -109,7 +109,7 @@ export const terminalConfig: TerminalConfig = {
     },
     theme: {
       description: 'Toggle theme  [dark|light]',
-      action: ({ setTheme, currentTheme, rawArgs }) => {
+      action: ({ setTheme, currentTheme, rawArgs }: any) => {
         const arg = rawArgs.trim().toLowerCase()
         const next =
           arg === 'dark' || arg === 'light' ? arg : currentTheme === 'dark' ? 'light' : 'dark'
@@ -123,7 +123,7 @@ export const terminalConfig: TerminalConfig = {
     },
     lang: {
       description: 'Switch language   [en|es]',
-      action: ({ switchLocale, currentLocale, rawArgs }) => {
+      action: ({ switchLocale, currentLocale, rawArgs }: any) => {
         const arg = rawArgs.trim().toLowerCase()
         const target = arg === 'en' || arg === 'es' ? arg : null
         if (target && target === currentLocale) {
@@ -144,7 +144,7 @@ export const terminalConfig: TerminalConfig = {
     },
     clear: {
       description: 'Clear terminal history',
-      action: ({ clear }) => {
+      action: ({ clear }: any) => {
         clear()
         return null
       },

@@ -39,6 +39,26 @@ export function TechNode({ node, position }: Props) {
     }
   }, [node.logo])
 
+  // a soft radial sprite texture for glow (created once)
+  const glowTexture = useMemo(() => {
+    const size = 128
+    const canvas = document.createElement('canvas')
+    canvas.width = size
+    canvas.height = size
+    const ctx = canvas.getContext('2d')!
+
+    const grd = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2)
+    grd.addColorStop(0, 'rgba(255,255,255,1)')
+    grd.addColorStop(0.2, 'rgba(255,200,120,0.9)')
+    grd.addColorStop(0.45, 'rgba(255,120,40,0.4)')
+    grd.addColorStop(1, 'rgba(0,0,0,0)')
+
+    ctx.fillStyle = grd
+    ctx.fillRect(0, 0, size, size)
+
+    return new THREE.CanvasTexture(canvas)
+  }, [])
+
   useFrame((state) => {
     if (!meshRef.current) return
     const t = state.clock.elapsedTime
@@ -86,19 +106,17 @@ export function TechNode({ node, position }: Props) {
             />
           </mesh>
 
-          {/* Soft halo behind icon */}
-          <mesh ref={glowRef}>
-            <sphereGeometry args={[radius * (hovered ? 1.1 : 1.0), 16, 16]} />
-            <meshStandardMaterial
+          {/* Soft additive halo behind icon using a sprite for stronger glow */}
+          <sprite ref={glowRef} scale={[radius * (hovered ? 3.4 : 2.8), radius * (hovered ? 3.4 : 2.8), 1]}>
+            <spriteMaterial
+              map={glowTexture}
               color={color}
-              emissive={color}
-              emissiveIntensity={hovered ? 0.35 : 0.12}
               transparent
-              opacity={hovered ? 0.12 : 0.06}
-              side={THREE.BackSide}
+              opacity={hovered ? 0.45 : 0.22}
               depthWrite={false}
+              blending={THREE.AdditiveBlending}
             />
-          </mesh>
+          </sprite>
         </Billboard>
       ) : (
         <>
@@ -124,19 +142,17 @@ export function TechNode({ node, position }: Props) {
             />
           </mesh>
 
-          {/* Outer glow ring */}
-          <mesh ref={glowRef}>
-            <sphereGeometry args={[radius, 16, 16]} />
-            <meshStandardMaterial
+          {/* Outer soft sprite halo for spheres */}
+          <sprite ref={glowRef} scale={[radius * (hovered ? 4.0 : 3.0), radius * (hovered ? 4.0 : 3.0), 1]}>
+            <spriteMaterial
+              map={glowTexture}
               color={color}
-              emissive={color}
-              emissiveIntensity={hovered ? 0.5 : 0.15}
               transparent
-              opacity={hovered ? 0.18 : 0.07}
-              side={THREE.BackSide}
+              opacity={hovered ? 0.45 : 0.18}
               depthWrite={false}
+              blending={THREE.AdditiveBlending}
             />
-          </mesh>
+          </sprite>
         </>
       )}
 

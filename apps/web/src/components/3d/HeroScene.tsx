@@ -11,7 +11,7 @@ export function HeroScene() {
     <Canvas
       camera={{ position: [0, 1, 7], fov: 55 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'default' }}
-      dpr={[1, 1.5]}
+      dpr={1.5}
       style={{ position: 'absolute', inset: 0 }}
       onCreated={({ gl }) => {
         // Prevent the browser from permanently disabling the context on loss

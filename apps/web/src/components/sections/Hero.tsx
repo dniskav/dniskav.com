@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { useTranslations, useLocale } from 'next-intl'
 import { Button } from '@/components/ui/Button'
-import { HeroTerminal } from '@/components/hero/HeroTerminal'
+import { HeroTerminal } from '@dniskav/hero-terminal'
 import { terminalConfig } from '@/data/terminalConfig'
 import { fadeInUp, staggerContainer } from '@/animations/variants'
 

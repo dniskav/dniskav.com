@@ -1,0 +1,14 @@
+# Node
+node_modules/
+
+# Local claude settings
+.claude/
+
+# Ignore markdown files except repository READMEs
+*.md
+!README.md
+!apps/web/README.md
+
+# OS / Editor
+.DS_Store
+.vscode/

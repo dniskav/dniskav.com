@@ -29,7 +29,7 @@ export function HeroScene() {
       <TechGraph />
 
       {/* Postprocessing bloom for soft additive glow */}
-      <EffectComposer multisampling={0} disableNormalPass>
+      <EffectComposer multisampling={0}>
         <Bloom
           luminanceThreshold={0.08}
           luminanceSmoothing={0.7}

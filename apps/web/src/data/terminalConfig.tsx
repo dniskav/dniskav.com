@@ -1,4 +1,6 @@
-import type { TerminalConfig } from '@dniskav/hero-terminal/dist/types'
+// Use a loose type here to avoid TS resolution issues with the package's
+// exports map. The runtime package provides the actual behavior.
+type TerminalConfig = any
 
 export const terminalConfig: TerminalConfig = {
   typingSpeed: 36,

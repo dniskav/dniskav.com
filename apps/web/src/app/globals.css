@@ -7,8 +7,8 @@
   --muted: #71717a;
   --muted-foreground: #a1a1aa;
   --border: #e4e4e7;
-  --accent: #3b82f6;
-  --accent-foreground: #ffffff;
+  --accent: #c9a227;
+  --accent-foreground: #0a0a0a;
 }
 
 /* ─── Design tokens: Dark mode (default) ─── */
@@ -18,8 +18,8 @@
   --muted: #3f3f46;
   --muted-foreground: #a1a1aa;
   --border: #27272a;
-  --accent: #3b82f6;
-  --accent-foreground: #ffffff;
+  --accent: #c9a227;
+  --accent-foreground: #0a0a0a;
 }
 
 @theme inline {

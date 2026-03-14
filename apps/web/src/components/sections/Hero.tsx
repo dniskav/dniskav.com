@@ -16,7 +16,7 @@ const HeroScene = dynamic(() => import('@/components/3d/HeroScene').then((m) => 
 
 function HeroFallback() {
   return (
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f172a] to-[#0a0a0a]" />
+    <div className="pointer-events-none absolute inset-0 bg-background" />
   )
 }
 
@@ -25,14 +25,14 @@ export function Hero() {
   const locale = useLocale()
 
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-[#0a0a0a]">
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-background">
       {/* 3D background — lazy loaded */}
       <div className="absolute inset-0 -z-0">
         <HeroScene />
       </div>
 
       {/* Gradient overlay — always dark so 3D remains visible (non-interactive) */}
-      <div className="pointer-events-none absolute inset-0 -z-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent" />
 
       {/* Text content — left column */}
       <motion.div

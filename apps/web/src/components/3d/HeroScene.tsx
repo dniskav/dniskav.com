@@ -9,7 +9,7 @@ import { EffectComposer, Bloom } from '@react-three/postprocessing'
 export function HeroScene() {
   return (
     <Canvas
-      camera={{ position: [0, 1, 7], fov: 55 }}
+      camera={{ position: [0, 1, 9], fov: 52 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'default' }}
       dpr={1.5}
       style={{ position: 'absolute', inset: 0 }}
@@ -22,8 +22,8 @@ export function HeroScene() {
       }}
     >
       <ambientLight intensity={0.4} />
-      <pointLight position={[4, 6, 4]} intensity={1.2} color="#3b82f6" />
-      <pointLight position={[-4, -4, -4]} intensity={0.4} color="#8b5cf6" />
+      <pointLight position={[4, 6, 4]} intensity={1.2} color="#c9a227" />
+      <pointLight position={[-4, -4, -4]} intensity={0.4} color="#a07820" />
 
       <Particles />
       <TechGraph />

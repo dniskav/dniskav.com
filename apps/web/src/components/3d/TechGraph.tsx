@@ -7,38 +7,64 @@ import { TechNode } from './TechNode'
 import { TechEdge } from './TechEdge'
 import { techNodes, techEdges } from '@/data/techGraph'
 
-// Simple radial layout: root at center, children spread around parent
+// Radial layout using BFS so nodes are always placed after their parent,
+// regardless of definition order in the data file.
 function buildPositions(nodes: typeof techNodes): Map<string, [number, number, number]> {
   const positions = new Map<string, [number, number, number]>()
 
-  // Root
+  // Use a seeded-ish deterministic offset so layout is stable across re-renders
+  const jitter = (seed: number, range: number) => (Math.sin(seed * 127.1) * 0.5 + 0.5) * range - range / 2
+
+  // Root at origin
   positions.set('dniskav', [0, 0, 0])
 
-  // First level: direct children of root spread on a circle
+  // Fibonacci sphere: evenly distributes N points on a unit sphere surface
+  const fibSphere = (i: number, total: number, r: number): [number, number, number] => {
+    const golden = Math.PI * (3 - Math.sqrt(5))
+    const y = 1 - (i / Math.max(total - 1, 1)) * 2
+    const rFlat = Math.sqrt(Math.max(0, 1 - y * y))
+    const theta = golden * i
+    return [Math.cos(theta) * rFlat * r, y * r, Math.sin(theta) * rFlat * r]
+  }
+
+  // Place root children on a sphere around the sun
   const rootChildren = nodes.filter((n) => n.parent === 'dniskav')
   rootChildren.forEach((node, i) => {
-    const angle = (i / rootChildren.length) * Math.PI * 2
-    const r = 2.6
-    positions.set(node.id, [Math.cos(angle) * r, (Math.random() - 0.5) * 1.2, Math.sin(angle) * r])
+    positions.set(node.id, fibSphere(i, rootChildren.length, 1.2))
   })
 
-  // Second level and beyond: spread around parent
-  const remaining = nodes.filter((n) => n.parent && n.parent !== 'dniskav')
-  remaining.forEach((node) => {
-    const parentPos = positions.get(node.parent!)
-    if (!parentPos) return
+  // BFS: place remaining nodes around their parent in 3D, not just flat XZ
+  const queue = nodes.filter((n) => n.parent && n.parent !== 'dniskav')
+  let maxPasses = 10
+  while (queue.length > 0 && maxPasses-- > 0) {
+    const unresolved: typeof queue = []
 
-    const siblings = remaining.filter((n) => n.parent === node.parent)
-    const idx = siblings.findIndex((n) => n.id === node.id)
-    const angle = (idx / Math.max(siblings.length, 1)) * Math.PI * 2 + Math.random() * 0.4
-    const r = 1.6 + Math.random() * 0.4
+    for (const node of queue) {
+      const parentPos = positions.get(node.parent!)
+      if (!parentPos) {
+        unresolved.push(node)
+        continue
+      }
 
-    positions.set(node.id, [
-      parentPos[0] + Math.cos(angle) * r,
-      parentPos[1] + (Math.random() - 0.5) * 1.0,
-      parentPos[2] + Math.sin(angle) * r,
-    ])
-  })
+      const siblings = nodes.filter((n) => n.parent === node.parent)
+      const idx = siblings.findIndex((n) => n.id === node.id)
+
+      // Spread children in 3D around parent using offset fibonacci sphere
+      const [dx, dy, dz] = fibSphere(idx, Math.max(siblings.length, 2), 0.68)
+      const jx = jitter(node.id.charCodeAt(0) * 2.1, 0.12)
+      const jy = jitter(node.id.charCodeAt(1) * 1.7, 0.12)
+      const jz = jitter(node.id.charCodeAt(0) * 3.3, 0.12)
+
+      positions.set(node.id, [
+        parentPos[0] + dx + jx,
+        parentPos[1] + dy + jy,
+        parentPos[2] + dz + jz,
+      ])
+    }
+
+    queue.length = 0
+    queue.push(...unresolved)
+  }
 
   return positions
 }
@@ -52,7 +78,7 @@ export function TechGraph() {
   const isDragging = useRef(false)
   const lastPos = useRef<[number, number] | null>(null)
   const velocity = useRef({ x: 0, y: 0 })
-  const targetRot = useRef({ x: -0.15, y: 0 }) // initial tilt and yaw
+  const targetRot = useRef({ x: -0.25, y: 0.6 }) // angled view: slight downward tilt + 35° yaw to show 3D volume
 
   // Clamp tilt so user can't flip the scene
   const minTilt = -Math.PI / 3

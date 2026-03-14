@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface Message {
@@ -15,8 +15,23 @@ export function AiChat() {
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
+  const [cooldown, setCooldown] = useState(0)
   const bottomRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const cooldownRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const startCooldown = useCallback((seconds: number) => {
+    setCooldown(seconds)
+    cooldownRef.current = setInterval(() => {
+      setCooldown((s) => {
+        if (s <= 1) {
+          clearInterval(cooldownRef.current!)
+          return 0
+        }
+        return s - 1
+      })
+    }, 1000)
+  }, [])
 
   useEffect(() => {
     if (open) {
@@ -44,7 +59,18 @@ export function AiChat() {
         body: JSON.stringify({ message: text, history }),
       })
       const data = await res.json()
-      setMessages((prev) => [...prev, { role: 'model', text: data.reply ?? 'Something went wrong.' }])
+      if (res.status === 429) {
+        const secs = data.retryIn ?? 60
+        startCooldown(secs)
+        const mins = Math.ceil(secs / 60)
+        const timeStr = secs < 60 ? `${secs}s` : `${mins} min${mins > 1 ? 's' : ''}`
+        setMessages((prev) => [...prev, {
+          role: 'model',
+          text: `☕ Sorry, I went to grab a coffee (yes, I'm an AI but I love coffee). I'll be back in: ${timeStr}`,
+        }])
+      } else {
+        setMessages((prev) => [...prev, { role: 'model', text: data.reply ?? 'Something went wrong.' }])
+      }
     } catch {
       setMessages((prev) => [...prev, { role: 'model', text: 'Connection error. Please try again.' }])
     } finally {
@@ -145,13 +171,13 @@ export function AiChat() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && send()}
-                  placeholder="Ask about Dani..."
-                  disabled={loading}
+                  placeholder={cooldown > 0 ? `back in ${cooldown}s... ☕` : 'Ask about Dani...'}
+                  disabled={loading || cooldown > 0}
                   className="flex-1 bg-transparent font-mono text-xs text-[var(--foreground)] placeholder:text-[var(--muted-foreground)]/40 outline-none disabled:opacity-50"
                 />
                 <motion.button
                   onClick={send}
-                  disabled={loading || !input.trim()}
+                  disabled={loading || cooldown > 0 || !input.trim()}
                   whileTap={{ scale: 0.9 }}
                   className="text-[var(--accent)] disabled:opacity-30 transition-opacity"
                 >

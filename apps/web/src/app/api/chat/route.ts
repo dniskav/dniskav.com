@@ -28,8 +28,14 @@ export async function POST(req: NextRequest) {
     const text = result.response.text()
 
     return NextResponse.json({ reply: text })
-  } catch (err) {
+  } catch (err: unknown) {
     console.error('[chat] error:', err)
+    if (typeof err === 'object' && err !== null && 'status' in err && (err as { status: number }).status === 429) {
+      const msg = String((err as { message?: string }).message ?? '')
+      const match = msg.match(/retryDelay["\s:]+(\d+)s/)
+      const retryIn = match ? parseInt(match[1], 10) : 60
+      return NextResponse.json({ error: 'rate_limit', retryIn }, { status: 429 })
+    }
     return NextResponse.json({ error: 'Something went wrong' }, { status: 500 })
   }
 }

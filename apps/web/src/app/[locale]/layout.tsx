@@ -8,6 +8,7 @@ import { Providers } from '@/components/layout/Providers'
 import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { CustomCursor } from '@/components/ui/CustomCursor'
+import { AiChat } from '@/components/ui/AiChat'
 import '../globals.css'
 
 const geistSans = Geist({
@@ -133,6 +134,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Navigation />
             <main>{children}</main>
             <Footer />
+            <AiChat />
           </NextIntlClientProvider>
         </Providers>
       </body>

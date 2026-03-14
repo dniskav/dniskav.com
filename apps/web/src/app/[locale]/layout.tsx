@@ -9,6 +9,7 @@ import { Navigation } from '@/components/layout/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { CustomCursor } from '@/components/ui/CustomCursor'
 import { AiChat } from '@/components/ui/AiChat'
+import { ParticlesBackground } from '@/components/3d/ParticlesBackground'
 import '../globals.css'
 
 const geistSans = Geist({
@@ -130,6 +131,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
         <Providers>
           <NextIntlClientProvider messages={messages}>
+            <ParticlesBackground />
             <CustomCursor />
             <Navigation />
             <main>{children}</main>

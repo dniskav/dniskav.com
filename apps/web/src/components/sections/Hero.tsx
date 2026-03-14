@@ -1,6 +1,5 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { useTranslations, useLocale } from 'next-intl'
 import { Button } from '@/components/ui/Button'
@@ -8,30 +7,13 @@ import { HeroTerminal } from '@dniskav/hero-terminal'
 import { terminalConfig } from '@/data/terminalConfig'
 import { fadeInUp, staggerContainer } from '@/animations/variants'
 
-// Lazy load the 3D scene — never block LCP
-const HeroScene = dynamic(() => import('@/components/3d/HeroScene').then((m) => m.HeroScene), {
-  ssr: false,
-  loading: () => <HeroFallback />,
-})
-
-function HeroFallback() {
-  return (
-    <div className="pointer-events-none absolute inset-0 bg-background" />
-  )
-}
-
 export function Hero() {
   const t = useTranslations('hero')
   const locale = useLocale()
 
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-background">
-      {/* 3D background — lazy loaded */}
-      <div className="absolute inset-0 -z-0">
-        <HeroScene />
-      </div>
-
-      {/* Gradient overlay — always dark so 3D remains visible (non-interactive) */}
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden">
+      {/* Gradient overlay */}
       <div className="pointer-events-none absolute inset-0 -z-0 bg-gradient-to-r from-background/90 via-background/50 to-transparent" />
 
       {/* Text content — left column */}

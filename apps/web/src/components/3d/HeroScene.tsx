@@ -2,7 +2,6 @@
 
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
-import { TechGraph } from './TechGraph'
 import { Particles } from './Particles'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 
@@ -26,7 +25,6 @@ export function HeroScene() {
       <pointLight position={[-4, -4, -4]} intensity={0.4} color="#a07820" />
 
       <Particles />
-      <TechGraph />
 
       {/* Postprocessing bloom for soft additive glow */}
       <EffectComposer multisampling={0}>

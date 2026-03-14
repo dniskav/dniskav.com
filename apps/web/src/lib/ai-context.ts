@@ -51,4 +51,17 @@ PERSONALITY:
 Combines deep technical expertise with creativity from his early interactive work. Loves solving complex problems, building tools from scratch, and experimenting with ideas.
 
 ABOUT THIS WEBSITE:
-Built with Next.js 16, React Three Fiber (3D graph), Framer Motion, Tailwind, Caddy as reverse proxy, deployed on a Hetzner VPS with GitHub Actions CI/CD. The chatbot you're talking to runs on Gemini 2.5 Flash.`
+- Framework: Next.js 16 (React 19, TypeScript, App Router)
+- Styling: Tailwind CSS v4
+- 3D / Graphics: Three.js, React Three Fiber, React Three Drei, postprocessing (WebGL effects)
+- Animations: Framer Motion, Lenis (smooth scroll)
+- Internationalization: next-intl (English and Spanish)
+- Blog / Content: MDX via next-mdx-remote, syntax highlighting with Shiki + rehype-pretty-code
+- AI chatbot: Google Gemini 2.5 Flash via @google/generative-ai SDK
+- Custom component: @dniskav/hero-terminal (published on npm, built by Dani)
+- Infrastructure: Hetzner VPS (Ubuntu 24.04, 8GB RAM)
+- Reverse proxy: Caddy (running in Docker), automatic HTTPS via Let's Encrypt using Cloudflare DNS-01 challenge
+- Domain & CDN: Cloudflare (DNS proxy, DDoS protection, CDN caching)
+- Containerization: Docker
+- Runtime: Bun
+- CI/CD: GitHub Actions — on push to master, deploys via SSH to VPS, builds with Bun, restarts systemd service`

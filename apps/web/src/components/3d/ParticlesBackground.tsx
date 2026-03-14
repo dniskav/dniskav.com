@@ -80,9 +80,13 @@ function BurstAndLogo() {
   const overlayRef = useRef<HTMLDivElement>(null)
 
   function spawnBurst() {
-    cx.current = (Math.random() - 0.5) * 18
-    cy.current = (Math.random() - 0.5) * 10
     cz.current = (Math.random() - 0.5) * 6
+    const dist = 8 - cz.current
+    const halfAngle = 26 * Math.PI / 180
+    const maxY = Math.tan(halfAngle) * dist * 0.9
+    const maxX = maxY * (16 / 9)
+    cx.current = Math.max(-maxX, Math.min(maxX, (Math.random() - 0.5) * 18))
+    cy.current = Math.max(-maxY, Math.min(maxY, (Math.random() - 0.5) * 10))
     burstDuration.current = 1.2 + Math.random() * 0.6
     for (let i = 0; i < BURST_COUNT; i++) {
       const theta = Math.random() * Math.PI * 2

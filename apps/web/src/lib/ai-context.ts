@@ -18,7 +18,7 @@ IDENTITY:
 CONTACT & LINKS:
 - Website: https://dniskav.com
 - GitHub: https://github.com/dniskav
-- LinkedIn: https://www.linkedin.com/in/daniel-silva-frontend/
+- LinkedIn: https://www.linkedin.com/in/dniskav/
 - Email: dniskav@gmail.com
 
 PROFESSIONAL FOCUS:

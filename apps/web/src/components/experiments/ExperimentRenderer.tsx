@@ -13,6 +13,16 @@ const experimentMap: Record<string, ReturnType<typeof dynamic>> = {
       </div>
     ),
   }),
+  'tech-constellation': dynamic(() => import('./TechConstellation').then((m) => ({ default: m.TechConstellation })), {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-full w-full items-center justify-center">
+        <span className="font-mono text-xs text-[var(--muted-foreground)] animate-pulse">
+          loading...
+        </span>
+      </div>
+    ),
+  }),
 }
 
 interface Props {

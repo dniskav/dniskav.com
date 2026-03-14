@@ -7,4 +7,8 @@ export const experimentComponents: Record<string, ComponentType> = {
     ssr: false,
     loading: () => null,
   }),
+  'tech-constellation': dynamic(() => import('./TechConstellation').then((m) => ({ default: m.TechConstellation })), {
+    ssr: false,
+    loading: () => null,
+  }),
 }

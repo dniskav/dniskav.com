@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Section } from '@/components/ui/Section'
 import { Button } from '@/components/ui/Button'
 import { AnimateIn } from '@/components/animations/AnimateIn'
@@ -22,13 +23,15 @@ export function About() {
         <AnimateIn variants={slideInLeft}>
           <div className="relative mx-auto w-72 lg:w-full max-w-sm">
             {/* Photo frame */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--border)]">
-              {/* Placeholder gradient — replace with <Image> when photo is available */}
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-800 via-zinc-900 to-[#0a0a0a]" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-30">
-                <span className="font-mono text-4xl">DS</span>
-                <span className="font-mono text-xs tracking-widest">photo coming soon</span>
-              </div>
+            <div className="relative overflow-hidden rounded-2xl border border-border">
+              <Image
+                src="/profile.png"
+                alt="Daniel Silva"
+                width={1696}
+                height={2528}
+                className="w-full h-auto block"
+                priority
+              />
               {/* Accent corner */}
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--accent)] to-purple-500" />
             </div>

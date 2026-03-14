@@ -17,7 +17,14 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd /root/var/www/app
+            git fetch origin master
+            git checkout -- apps/web/bun.lock 2>/dev/null || rm -f apps/web/bun.lock
             git pull origin master
+            export BUN_INSTALL="$HOME/.bun"
+            export PATH="$BUN_INSTALL/bin:$PATH"
+            if ! command -v bun &> /dev/null; then
+              curl -fsSL https://bun.sh/install | bash
+            fi
             cd apps/web
             bun install --frozen-lockfile
             bun run build

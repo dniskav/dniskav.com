@@ -44,6 +44,61 @@ export const terminalConfig: TerminalConfig = {
         return <p className="text-muted-foreground pl-4">Scrolling to About…</p>
       },
     },
+    whoami: {
+      description: 'Who is Daniel Silva?',
+      action: () => (
+        <div className="pl-4 space-y-1">
+          <p className="text-accent font-semibold">Daniel Silva — Senior Frontend Engineer</p>
+          <p className="text-muted-foreground">14+ years building web apps at scale.</p>
+          <p className="text-muted-foreground">Originally from Colombia, now based in Tarragona, Spain.</p>
+          <p className="text-muted-foreground">
+            Core stack:{' '}
+            <span className="text-white">React · TypeScript · Next.js · Angular</span>
+          </p>
+          <p className="text-muted-foreground">
+            Also into:{' '}
+            <span className="text-white">Python · FastAPI · Three.js · AI tooling</span>
+          </p>
+          <p className="text-muted-foreground">
+            Worked at{' '}
+            <span className="text-white">Daimler (T-Systems) · Globant · Endava · Lululemon · Elavon</span>
+          </p>
+          <p className="text-muted-foreground mt-1">
+            Era I: 14 years as a craftsman engineer →{' '}
+            <span className="text-white">Era II: AI-augmented engineer (2025→)</span>
+          </p>
+        </div>
+      ),
+    },
+    site: {
+      description: 'How is this site built?',
+      action: () => (
+        <div className="pl-4 space-y-1">
+          <p className="text-accent font-semibold">dniskav.com — Stack & Infrastructure</p>
+          <p className="text-muted-foreground">
+            Framework: <span className="text-white">Next.js 15 (App Router) · React 19</span>
+          </p>
+          <p className="text-muted-foreground">
+            Styling: <span className="text-white">Tailwind CSS v4 · Framer Motion · Lenis</span>
+          </p>
+          <p className="text-muted-foreground">
+            3D / WebGL: <span className="text-white">Three.js · React Three Fiber · Drei</span>
+          </p>
+          <p className="text-muted-foreground">
+            i18n: <span className="text-white">next-intl (EN + ES)</span>
+          </p>
+          <p className="text-muted-foreground">
+            AI chat: <span className="text-white">Gemini 2.5 Flash</span>
+          </p>
+          <p className="text-muted-foreground">
+            Terminal: <span className="text-white">@dniskav/hero-terminal (custom npm pkg)</span>
+          </p>
+          <p className="text-muted-foreground">
+            Deploy: <span className="text-white">Hetzner VPS · Caddy · Cloudflare · Docker · GitHub Actions</span>
+          </p>
+        </div>
+      ),
+    },
     skills: {
       description: 'Go to Skills section',
       action: ({ scroll }: any) => {
